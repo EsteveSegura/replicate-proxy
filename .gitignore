@@ -23,3 +23,10 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Wrangler
+.wrangler/
+.dev.vars
+
+# Backup files
+*.backup

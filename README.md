@@ -1,39 +1,52 @@
 # Replicate API Proxy
 
-Servidor proxy simple para evitar problemas de CORS al llamar a la API de Replicate desde localhost.
+Simple CORS proxy for Replicate API built with Cloudflare Workers. Works both locally and in production.
 
-## Instalación
+## Installation
 
 ```bash
 npm install
 ```
 
-## Uso
+## Usage
+
+### Local Development
 
 ```bash
 npm start
 ```
 
-El servidor se ejecutará en `http://localhost:1111`
+The server will run on `http://localhost:8787` (default Wrangler port)
 
-## Ejemplo de uso
+### Deploy to Cloudflare
 
-En lugar de llamar directamente a:
+```bash
+npm run deploy
+```
+
+## Example Usage
+
+Instead of calling directly to:
 ```
 https://api.replicate.com/v1/models/google/nano-banana-pro/predictions
 ```
 
-Llama a:
+Call to:
 ```
-http://localhost:1111/v1/models/google/nano-banana-pro/predictions
+http://localhost:8787/v1/models/google/nano-banana-pro/predictions
+```
+
+Or in production:
+```
+https://your-worker.workers.dev/v1/models/google/nano-banana-pro/predictions
 ```
 
 ## Headers
 
-No olvides incluir tu token de autorización en las peticiones:
+Don't forget to include your authorization token in requests:
 
 ```javascript
-fetch('http://localhost:1111/v1/models', {
+fetch('http://localhost:8787/v1/models', {
   headers: {
     'Authorization': 'Token your_replicate_api_token',
     'Content-Type': 'application/json'
@@ -41,10 +54,12 @@ fetch('http://localhost:1111/v1/models', {
 })
 ```
 
-## Características
+## Features
 
-- ✅ Bypass de CORS
-- ✅ Soporta todos los métodos HTTP (GET, POST, PUT, DELETE, etc.)
-- ✅ Forward automático de todos los headers
-- ✅ Forward de query params
-- ✅ Logging de peticiones
+- ✅ CORS bypass
+- ✅ Supports all HTTP methods (GET, POST, PUT, DELETE, etc.)
+- ✅ Automatic forwarding of all headers
+- ✅ Query params forwarding
+- ✅ Request logging
+- ✅ No timeouts (handles long-running requests)
+- ✅ Same code for local and production
