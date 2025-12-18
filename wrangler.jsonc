@@ -6,6 +6,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "replicate-proxy",
 	"main": "src/index.js",
+	"compatibility_date": "2025-12-19",
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1
