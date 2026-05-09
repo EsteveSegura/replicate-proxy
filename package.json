@@ -8,10 +8,17 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
   },
-  "keywords": ["proxy", "replicate", "cors"],
+  "keywords": [
+    "proxy",
+    "replicate",
+    "cors"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "wrangler": "^4.12.0"
+  },
+  "dependencies": {
+    "gnomoagent": "github:EsteveSegura/GnomoAgent"
   }
 }
